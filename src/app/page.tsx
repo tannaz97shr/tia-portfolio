@@ -1,26 +1,27 @@
 import { site } from "@/shared/content/site";
+import { NAV_ITEMS, SECTIONS } from "@/shared/routes";
 
-// Stage 1 placeholder: proves fonts and tokens. Replaced section by section from stage 2.
+// Placeholder sections so the nav anchors resolve. Each build stage replaces its section.
 export default function Home() {
   return (
-    <main id="top" className="mx-auto flex min-h-dvh max-w-[1240px] flex-col justify-center gap-6 px-5 py-16 sm:px-8">
-      <p className="inline-flex w-fit items-center gap-2.5 rounded-pill bg-surface px-4 py-2 font-mono text-[13px]">
-        <span aria-hidden="true" className="size-[9px] rounded-pill bg-success" />
-        {site.availability} · {site.location}
-      </p>
-      <h1 className="font-display text-[clamp(44px,6.2vw,88px)] leading-none font-bold tracking-[-0.035em]">
-        Hi, I’m Tia.
-        <br />
-        Something <span className="rounded-[0.2em] bg-peach px-[0.14em]">lovely</span> is on its way.
-      </h1>
-      <p className="font-hand text-[26px] font-semibold text-violet-ink">(the full site is being built right now)</p>
-      <p className="max-w-[580px] text-[19px] leading-relaxed text-ink-soft">
-        {site.roleLine}. In the meantime, say hi at{" "}
-        <a className="font-semibold" href={`mailto:${site.email}`}>
-          {site.email}
-        </a>
-        .
-      </p>
-    </main>
+    <>
+      <section id={SECTIONS.top} className="mx-auto flex max-w-[1240px] flex-col gap-6 px-5 pt-5 pb-16 md:px-8 md:pt-14">
+        <p className="inline-flex w-fit items-center gap-2.5 rounded-pill bg-surface px-4 py-2 font-mono text-[13px]">
+          <span aria-hidden="true" className="size-[9px] rounded-pill bg-success" />
+          {site.availability} · {site.location}
+        </p>
+        <h1 className="m-0 font-display text-[clamp(44px,6.2vw,88px)] leading-none font-bold tracking-[-0.035em]">
+          Hi, I’m Tia.
+          <br />
+          Something <span className="rounded-[0.2em] bg-peach px-[0.14em]">lovely</span> is on its way.
+        </h1>
+        <p className="m-0 font-hand text-[26px] font-semibold text-violet-ink">(the full site is being built right now)</p>
+      </section>
+      {NAV_ITEMS.map((item) => (
+        <section key={item.id} id={item.id} aria-label={item.label} className="mx-auto max-w-[1240px] px-5 py-16 md:px-8">
+          <p className="m-0 font-mono text-[13px] text-muted">{item.label.toUpperCase()} · COMING SOON</p>
+        </section>
+      ))}
+    </>
   );
 }
