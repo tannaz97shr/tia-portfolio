@@ -13,7 +13,7 @@ Last updated: 2026-11-25 (kickoff chat).
 ## When Vercel is connected (next steps, in order)
 
 1. Check PR #1 for the Vercel preview; QA it in Chrome (Claude in Chrome, new tab; 320/390 via Playwright locally). Merge: `gh api -X PUT repos/tannaz97shr/tia-portfolio/pulls/1/merge -f merge_method=squash`, then delete `feat/scaffold` (`gh api -X DELETE repos/tannaz97shr/tia-portfolio/git/refs/heads/feat/scaffold`). Note: deleting the base branch auto-closes a stacked PR, so **retarget #2 to `main` first** (`gh api -X PATCH repos/…/pulls/2 -f base=main`).
-2. For each next PR: `git fetch --depth=50 origin main`, rebase its own commits onto `origin/main` (`git rebase --onto origin/main <old-base-branch-tip> <branch>`), `git push --force-with-lease` **on that feature branch only**, wait for CI + preview, QA in Chrome, merge, retarget the next PR, repeat.
+2. For each next PR: `git fetch --depth=50 origin main`, then `git merge origin/main` into that feature branch (never rebase or force-push: the rules forbid rewriting pushed history), push, wait for CI + preview, QA in Chrome, squash-merge, retarget the next PR to `main`, repeat. Fixes made low in the stack are merged forward branch by branch, the same way.
 3. After #6 merges: production QA in Chrome, Lighthouse on the production URL, `git tag v1.0.0` + GitHub release (`gh api repos/…/releases -f tag_name=v1.0.0 …`), final summary to Tia.
 
 ## Inputs Tia gave (kickoff chat)
