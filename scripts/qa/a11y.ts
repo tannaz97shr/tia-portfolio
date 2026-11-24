@@ -5,6 +5,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { arg, BASE_URL, launch, WIDTHS } from "./browser";
 
 const path = arg("path", "/");
+const expectStatus = Number(arg("expect", "200")); // e.g. --expect=404 for the not-found page
 let failures = 0;
 const fail = (msg: string) => {
   failures += 1;
@@ -21,11 +22,11 @@ try {
       if (m.type() === "error" && !m.text().startsWith("Failed to load resource")) errors.push(m.text());
     });
     page.on("response", (r) => {
-      if (r.status() >= 400) errors.push(`HTTP ${r.status()} ${r.url()}`);
+      if (r.status() >= 400 && !(r.status() === expectStatus && r.url() === BASE_URL + path)) errors.push(`HTTP ${r.status()} ${r.url()}`);
     });
     page.on("pageerror", (e) => errors.push(e.message));
     const res = await page.goto(BASE_URL + path, { waitUntil: "networkidle" });
-    if (!res?.ok()) fail(`${width}px: HTTP ${res?.status()}`);
+    if (res?.status() !== expectStatus) fail(`${width}px: HTTP ${res?.status()} (expected ${expectStatus})`);
     await page.waitForTimeout(1500);
 
     const axe = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"]).analyze();
@@ -35,9 +36,9 @@ try {
     for (const e of errors) fail(`${width}px console: ${e}`);
 
     const brokenAnchors = await page.evaluate(() =>
-      [...document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')]
+      [...document.querySelectorAll<HTMLAnchorElement>('a[href^="#"], a[href^="/#"]')]
         .map((a) => a.getAttribute("href") ?? "")
-        .filter((h) => h.length > 1 && !document.getElementById(h.slice(1))),
+        .filter((h) => location.pathname === "/" && h.split("#")[1] && !document.getElementById(h.split("#")[1] ?? "")),
     );
     for (const h of brokenAnchors) fail(`${width}px anchor target missing: ${h}`);
 
