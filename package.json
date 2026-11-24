@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "test": "bun test src",
     "qa:shots": "bun scripts/qa/shots.ts",
     "qa:a11y": "bun scripts/qa/a11y.ts"

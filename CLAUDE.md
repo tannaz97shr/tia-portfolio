@@ -11,7 +11,7 @@ Claude runs git itself in this repo (branch, commit, push, open PR, squash-merge
 | Install | `bun install` |
 | Dev server (Tia's, port 3000) | `bun run dev` |
 | Lint | `bun run lint` |
-| Type check | `bun run typecheck` |
+| Type check (generates Next types first) | `bun run typecheck` |
 | Unit tests | `bun test` (CI: `bun test src`) |
 | Production build | `bun run build` |
 | Claude's production server (port 3001) | `bun run start -- -p 3001` |
