@@ -11,7 +11,7 @@ type LogoProps = {
 };
 
 const DISC = { navy: "var(--ink)", light: "var(--bg)" } as const;
-const LETTERS = { navy: "#ffffff", light: "var(--ink)" } as const;
+const LETTERS = { navy: "var(--surface)", light: "var(--ink)" } as const;
 
 /**
  * The "tıa" monogram from the logo artboard: the coral swoosh is the fringe,

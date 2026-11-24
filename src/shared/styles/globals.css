@@ -128,6 +128,15 @@
   0%, 100% { transform: rotate(-5deg); }
   50% { transform: rotate(4deg); }
 }
+@keyframes rise {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: none; }
+}
+/* Transform-only rise for the headline: it stays painted (no opacity), so it never delays LCP. */
+@keyframes rise-y {
+  from { transform: translateY(18px); }
+  to { transform: none; }
+}
 @keyframes pulse-ring {
   0%, 100% { box-shadow: 0 0 0 0 rgb(31 157 107 / 0.45); }
   50% { box-shadow: 0 0 0 8px rgb(31 157 107 / 0); }
@@ -144,6 +153,12 @@
     transform-origin: center;
     --bob: -4px;
     animation: bob 1.6s ease-in-out infinite;
+  }
+  .rise {
+    animation: rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  .rise-y {
+    animation: rise-y 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s both;
   }
   .blob {
     border-radius: 42% 58% 63% 37% / 45% 40% 60% 55%;
