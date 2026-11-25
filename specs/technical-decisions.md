@@ -66,7 +66,7 @@ Asked as 15 numbered questions in the kickoff chat (25 Nov 2026). Tia answered: 
 
 | Date | # | Decision |
 | --- | --- | --- |
-| 2026-11-25 | 1 | Use the existing repo `tannaz97shr/tia-portfolio` (Tia's local clone: `/Users/tia.shr/Projects/tia-portfolio`). Public is recommended; it is currently private and Tia flips visibility herself. |
+| 2026-11-25 | 1 | Use the existing repo `tannaz97shr/tia-portfolio` (Tia's local clone: `/Users/tia.shr/Projects/tia-portfolio`). Tia made it public on 2026-11-25. |
 | 2026-11-25 | 2 | Stage 1 replaces the Next 14 Create Next App starter with the Next 16 / Tailwind 4 / Bun scaffold in a normal PR. No history rewrite. |
 | 2026-11-25 | 3 | Launch on the `*.vercel.app` URL. Domain is a later decision for Tia. |
 | 2026-11-25 | 4 | Contact = `mailto:` link + copy-email button. No form. |
@@ -81,6 +81,7 @@ Asked as 15 numbered questions in the kickoff chat (25 Nov 2026). Tia answered: 
 | 2026-11-25 | 13 | Auto-merge to `main` after every gate in the stage passes. |
 | 2026-11-25 | 14 | `/work/[slug]` case studies only after the stable release, when Tia asks (build-plan "Later" wins over the old "stage 6" note). |
 | 2026-11-25 | 15 | Vercel previews QA'd in Tia's Chrome via Claude in Chrome (new tab). If Chrome isn't reachable, QA locally and log the preview check as deferred. |
+| 2026-11-25 | post-release | Tia bought `tiashirzadi.com.au` and connected it in Vercel (VentraIP DNS). `www` is primary; the apex redirects to it. The Vercel project now lives under the `zeapard-devs` team (previews: `tia-portfolio-git-<branch>-zeapard-devs.vercel.app`). |
 
 ## Working mode
 
@@ -89,7 +90,7 @@ Asked as 15 numbered questions in the kickoff chat (25 Nov 2026). Tia answered: 
 - Claude's production server runs on port 3001 in the cloud workspace; Playwright screenshots come from there.
 - Vercel previews and production are QA'd in Chrome (the cloud shell can't reach `*.vercel.app`).
 - Phone widths (320/390) are checked with Playwright viewports locally and in the browser pane on the preview. Chrome windows can't go below 500px.
-- In the cloud workspace GitHub GraphQL is blocked, so `gh pr create` / `gh pr merge` don't work. Use the REST API: `gh api repos/tannaz97shr/tia-portfolio/pulls -f title=… -f head=… -f base=main -f body=…` to open, `gh api -X PUT repos/…/pulls/<n>/merge -f merge_method=squash` to merge, then delete the branch with `gh api -X DELETE repos/…/git/refs/heads/<branch>`.
+- In the cloud workspace GitHub GraphQL is blocked, so `gh pr create` / `gh pr merge` don't work. Use the REST API: `gh api repos/tannaz97shr/tia-portfolio/pulls -f title=… -f head=… -f base=main -f body=…` to open, `gh api -X PUT repos/…/pulls/<n>/merge -f merge_method=squash` to merge. Branch deletion through the API is blocked in the cloud workspace, so merged branches stay until Tia deletes them (or turns on "Automatically delete head branches").
 - If the cloud workspace isn't available, fall back to the connected local folder. Follow the "Working environment notes" from the Zeapard template, and still do git yourself if `gh auth status` passes there; otherwise give me the commands.
 
 ## Git and deploy (Claude runs all of it)
@@ -178,7 +179,7 @@ Fonts: Space Grotesk 500–700 (display), Inter 400–600 (body), JetBrains Mono
 ## Accessibility, SEO, performance
 
 - Real buttons and links, 44px touch targets, visible focus, skip link, logical headings.
-- Metadata: title template, description, canonical, `metadataBase` (`SITE_URL` → Vercel production URL → preview → localhost).
+- Metadata: title template, description, canonical, `metadataBase` (`SITE_URL` → `site.url` (www.tiashirzadi.com.au) on any Vercel build → localhost).
 - Open Graph image generated with `opengraph-image.tsx` (logo plus name on lilac). Favicon from the logo mark.
 - `sitemap.ts`, `robots.ts`, and Person JSON-LD (name, jobTitle, url, sameAs: LinkedIn, GitHub, Upwork).
 - Portrait via `next/image` with `preload` (the LCP), WebP, at least 2× the slot.
