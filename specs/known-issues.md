@@ -13,7 +13,9 @@ Open problems, placeholders waiting on Tia, deferred work, and decisions Claude 
 
 ## Placeholders on the site
 
-_None visible yet. Sections show "coming soon" stubs until stages 3–5 land._
+| Placeholder | Where | Waiting on |
+| --- | --- | --- |
+| "Download my CV ↓ [PLACEHOLDER: CV PDF]" (dashed, not a link) | Hero, "I'm hiring" view | Phone-free CV PDF → set `site.cvHref` to `/tia-shirzadi-cv.pdf` |
 
 ## Open problems
 
@@ -38,3 +40,8 @@ _None._
 | 2026-11-25 | Footer is its own layout component under the contact section rather than inside it. | Same look; keeps the contact module about contact. |
 | 2026-11-25 | Home link is named by its visible text ("tia shirzadi, home") instead of an aria-label. | axe `label-content-name-mismatch`. |
 | 2026-11-25 | Stop the 3001 server with `pkill -f next-server` (my own servers only). | `lsof` can't see listening ports in the cloud workspace, so an old server kept serving a stale build. |
+| 2026-11-25 | Hero text "rise" uses CSS keyframes (works before JS); the headline rises with transform only, and so does the portrait wrapper. `motion` is used for the switch (AnimatePresence + `layoutId` pill) and the underline (`pathLength`). | Opacity-0 starts hide the LCP until hydration; CSS keeps the hero painted at first paint. |
+| 2026-11-25 | Portrait is the LCP on phones (320/390). From 768px the headline is the larger element and is the LCP; it is server-rendered, never transparent, and the portrait is still preloaded. QA checks this per width. | Can't honestly make a smaller image the LCP; both paint at first render. |
+| 2026-11-25 | Hero switches to two columns at 1280px (single column with the portrait on top below that). | At 1024px the two-column headline broke into one-word lines. |
+| 2026-11-25 | Badge ring text uses `textLength` to fit the circle exactly. | In the canvas the text was longer than the ring and overlapped itself. |
+| 2026-11-25 | Portrait: 1254px PNG → 960×960 WebP (44 KB), `next/image` with `preload` + blur placeholder. | ≥2× the 402px slot. |

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Footer } from "@/shared/components/layout/Footer";
 import { Header } from "@/shared/components/layout/Header";
+import { MotionProvider } from "@/shared/components/MotionProvider";
 import { site } from "@/shared/content/site";
 import { getSiteUrl } from "@/shared/lib/site-url";
 import { fontVariables } from "@/shared/styles/fonts";
@@ -38,13 +39,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <a href="#main" className="skip-link">
           Skip to content
         </a>
-        <div className="relative overflow-x-clip">
-          <Header />
-          <main id="main" tabIndex={-1} className="outline-none">
-            {children}
-          </main>
-          <Footer />
-        </div>
+        <MotionProvider>
+          <div className="relative overflow-x-clip">
+            <Header />
+            <main id="main" tabIndex={-1} className="outline-none">
+              {children}
+            </main>
+            <Footer />
+          </div>
+        </MotionProvider>
       </body>
     </html>
   );
