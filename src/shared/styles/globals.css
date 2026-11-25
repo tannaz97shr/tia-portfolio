@@ -7,7 +7,7 @@
   --muted: #5e5873;
   --bg: #f6f3fc;
   --surface: #ffffff;
-  --violet: #7c5cff;
+  --violet: #7354f5; /* canvas #7C5CFF gave 4.35:1 with white; 4.87:1 now */
   --violet-ink: #4b32c3;
   --coral: #f08a80;
   --gold: #f2c14e;
