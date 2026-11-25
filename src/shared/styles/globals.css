@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+/* Design tokens (specs/technical-decisions.md → "Design tokens"). Components use these only. */
+:root {
+  --ink: #1e2340;
+  --ink-soft: #4a4560;
+  --muted: #5e5873;
+  --bg: #f6f3fc;
+  --surface: #ffffff;
+  --violet: #7c5cff;
+  --violet-ink: #4b32c3;
+  --coral: #f08a80;
+  --gold: #f2c14e;
+  --lilac: #dcd3ff;
+  --peach: #ffd6c4;
+  --mint: #c9f0de;
+  --butter: #ffefa8;
+  --success: #1f9d6b;
+  /* Card header strips and dark-card body text, from the canvas. */
+  --butter-deep: #ffe27a;
+  --peach-deep: #ffc2a8;
+  --lilac-deep: #cbbeff;
+  --mint-deep: #b2e8cf;
+  --on-ink-soft: #d9d4ea;
+  --portrait-bg: #b9b6c4;
+}
+
+@theme inline {
+  /* Switch off Tailwind's defaults so only our tokens exist. */
+  --color-*: initial;
+  --font-*: initial;
+  --radius-*: initial;
+
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted: var(--muted);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-violet: var(--violet);
+  --color-violet-ink: var(--violet-ink);
+  --color-coral: var(--coral);
+  --color-gold: var(--gold);
+  --color-lilac: var(--lilac);
+  --color-peach: var(--peach);
+  --color-mint: var(--mint);
+  --color-butter: var(--butter);
+  --color-success: var(--success);
+  --color-butter-deep: var(--butter-deep);
+  --color-peach-deep: var(--peach-deep);
+  --color-lilac-deep: var(--lilac-deep);
+  --color-mint-deep: var(--mint-deep);
+  --color-on-ink-soft: var(--on-ink-soft);
+  --color-portrait: var(--portrait-bg);
+  --color-white: #ffffff;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+  --font-hand: var(--font-caveat), cursive;
+
+  --radius-pill: 999px;
+  --radius-sm: 12px;
+  --radius-md: 14px;
+  --radius-card-sm: 20px;
+  --radius-card: 22px;
+  --radius-card-lg: 26px;
+  --radius-card-xl: 32px;
+  --radius-panel: 44px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: var(--violet-ink);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--violet-ink);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: var(--lilac);
+    color: var(--ink);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

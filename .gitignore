@@ -34,3 +34,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# all env files (never commit)
+.env*
+
+# QA output
+/design-reference/qa/
+/test-results/
+/playwright-report/
