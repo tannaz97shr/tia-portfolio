@@ -6,15 +6,13 @@ Open problems, placeholders waiting on Tia, deferred work, and decisions Claude 
 
 | Item | Where | What's needed |
 | --- | --- | --- |
-| Repo visibility | GitHub settings | Repo is private; kickoff #1 recommends public. Tia flips it (Settings → Danger zone). |
-| Merged branches | GitHub | `feat/*` branches from PRs #1–#6 are still on GitHub: my branch delete was blocked by a permission check. Safe to delete them (GitHub → Branches), or turn on "Automatically delete head branches" in repo settings. |
-| CV PDF | `site.cvHref` → `public/tia-shirzadi-cv.pdf` | A CV **without the phone number**. Until then the "Download my CV" button shows `[PLACEHOLDER: CV PDF]`. |
+| Custom domain `tiashirzadi.com.au` | Vercel → Domains, then VentraIP DNS | Tia adds the domain in Vercel and enters the DNS records Vercel shows at VentraIP (DNS changes are Tia's). Claude then redeploys and checks canonical, sitemap and OG URLs use the domain. |
 
 ## Placeholders on the site
 
 | Placeholder | Where | Waiting on |
 | --- | --- | --- |
-| "Download my CV ↓ [PLACEHOLDER: CV PDF]" (dashed, not a link) | Hero, "I'm hiring" view | Phone-free CV PDF → set `site.cvHref` to `/tia-shirzadi-cv.pdf` |
+| None. | | |
 
 ## Open problems
 
@@ -62,3 +60,4 @@ Open problems, placeholders waiting on Tia, deferred work, and decisions Claude 
 | 2026-11-25 | 404 page copy written in Tia's voice ("Oops, this page wandered off." / "(probably went to get cake)"), with "Take me home" and a mailto "Tell me what broke". | Stage 6 asks for a 404 page; there's no artboard for it. |
 | 2026-11-25 | Stacked PRs merged forward with `git merge -s ours origin/main` after each squash-merge (checked first that main's tree matched the merged branch exactly). | No conflicts, no history rewrite, each PR diff stays its own stage. |
 | 2026-11-25 | Production Lighthouse run via PageSpeed Insights in Chrome (mobile): 100 / 100 / 100 / 100. | Cloud shell can't reach `*.vercel.app`. |
+| 2026-11-25 | CV served from `public/tia-shirzadi-cv.pdf` (Tia's phone-free "Master Resume - Portfolio" PDF, checked for a phone number in text and metadata) with `download="Tia-Shirzadi-CV.pdf"`. | Kickoff #5; filename is friendlier for recruiters. |

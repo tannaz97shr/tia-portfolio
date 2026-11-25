@@ -3,7 +3,7 @@ import { anchor, SECTIONS } from "@/shared/routes";
 
 export type HeroView = "hire" | "client";
 
-type Cta = { label: string; href: string; variant: "violet" | "coral" | "outline"; placeholder?: boolean };
+type Cta = { label: string; href: string; variant: "violet" | "coral" | "outline"; placeholder?: boolean; download?: string };
 
 export const heroContent = {
   availability: { long: `${site.availability} · ${site.location}`, short: `${site.availability} · Melbourne` },
@@ -15,7 +15,7 @@ export const heroContent = {
       tab: "I’m hiring",
       body: "About 6 years of commercial React, Next.js and TypeScript across fintech, banking, Web3, IoT and AI. These days I build complete products end to end with Node.js, Bun, Firebase and Stripe.",
       ctas: [
-        { label: "Download my CV ↓", href: site.cvHref, variant: "violet", placeholder: site.cvHref.startsWith("[") },
+        { label: "Download my CV ↓", href: site.cvHref, variant: "violet", placeholder: site.cvHref.startsWith("["), download: "Tia-Shirzadi-CV.pdf" },
         { label: "See experience", href: anchor(SECTIONS.experience), variant: "outline" },
       ],
     },

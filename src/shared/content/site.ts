@@ -22,8 +22,8 @@ export const site = {
     studio: "https://zeapard.com.au",
   },
   studio: { name: "Zeapard Devs", url: "https://zeapard.com.au" },
-  /** Visible placeholder until Tia adds a phone-free PDF at public/tia-shirzadi-cv.pdf. */
-  cvHref: "[PLACEHOLDER: CV PDF]" as string,
+  /** Phone-free CV in public/. Never publish the master resume with the phone number. */
+  cvHref: "/tia-shirzadi-cv.pdf" as string,
   description:
     "Tia Shirzadi is a full-stack software engineer in Melbourne building React, Next.js and TypeScript web apps that look lovely and actually work.",
 } as const;

@@ -1,4 +1,6 @@
 import { describe, expect, test } from "bun:test";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { mailto, site } from "./site";
 
 describe("site facts", () => {
@@ -14,5 +16,10 @@ describe("site facts", () => {
   test("mailto encodes the subject", () => {
     expect(mailto()).toBe("mailto:tia.shr97@gmail.com");
     expect(mailto("New project")).toBe("mailto:tia.shr97@gmail.com?subject=New%20project");
+  });
+
+  test("CV link points at a file in public/", () => {
+    expect(site.cvHref.startsWith("/")).toBe(true);
+    expect(existsSync(join(process.cwd(), "public", site.cvHref))).toBe(true);
   });
 });
