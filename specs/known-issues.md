@@ -45,3 +45,6 @@ _None._
 | 2026-11-25 | Hero switches to two columns at 1280px (single column with the portrait on top below that). | At 1024px the two-column headline broke into one-word lines. |
 | 2026-11-25 | Badge ring text uses `textLength` to fit the circle exactly. | In the canvas the text was longer than the ring and overlapped itself. |
 | 2026-11-25 | Portrait: 1254px PNG → 960×960 WebP (44 KB), `next/image` with `preload` + blur placeholder. | ≥2× the 402px slot. |
+| 2026-11-25 | Project copy tightened to match the resume: Millstone recurring orders "designed never to duplicate" (canvas: "built to never duplicate"); Nook "order status tracking" (canvas: "live order status"); OC Pool "a local pool cleaning business" (canvas: "a Melbourne pool service"). | No claims beyond the resume wording. |
+| 2026-11-25 | Colour cards sit three to a row from 1024px, two at 768px, one on phones; the single client card (OC Pool) takes half the width. | Matches the canvas's auto-fit grid; Sirwanica is hidden. |
+| 2026-11-25 | `qa:links` can't reach GitHub/Vercel/Upwork from the cloud workspace (proxy 403); those URLs are checked in Chrome on the preview. | Sandbox network allowlist. |

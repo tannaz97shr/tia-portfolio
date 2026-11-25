@@ -13,7 +13,8 @@
     "qa:shots": "bun scripts/qa/shots.ts",
     "qa:a11y": "bun scripts/qa/a11y.ts",
     "qa:menu": "bun scripts/qa/menu.ts",
-    "qa:hero": "bun scripts/qa/hero.ts"
+    "qa:hero": "bun scripts/qa/hero.ts",
+    "qa:links": "bun scripts/qa/links.ts"
   },
   "dependencies": {
     "@fontsource-variable/caveat": "^5.3.0",
