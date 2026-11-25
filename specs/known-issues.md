@@ -7,9 +7,8 @@ Open problems, placeholders waiting on Tia, deferred work, and decisions Claude 
 | Item | Where | What's needed |
 | --- | --- | --- |
 | Repo visibility | GitHub settings | Repo is private; kickoff #1 recommends public. Tia flips it (Settings → Danger zone). |
-| Vercel project | Vercel dashboard | Import `tannaz97shr/tia-portfolio` (Hobby, defaults) and send Claude the production URL. Previews and production deploys depend on it. |
+| Merged branches | GitHub | `feat/*` branches from PRs #1–#6 are still on GitHub: my branch delete was blocked by a permission check. Safe to delete them (GitHub → Branches), or turn on "Automatically delete head branches" in repo settings. |
 | CV PDF | `site.cvHref` → `public/tia-shirzadi-cv.pdf` | A CV **without the phone number**. Until then the "Download my CV" button shows `[PLACEHOLDER: CV PDF]`. |
-| Web Analytics | Vercel dashboard | Turn on Web Analytics once the project exists (kickoff #12). |
 
 ## Placeholders on the site
 
@@ -21,15 +20,13 @@ Open problems, placeholders waiting on Tia, deferred work, and decisions Claude 
 
 | Problem | Evidence | Next step |
 | --- | --- | --- |
-| No Vercel project is connected, so no previews or production deploys. PRs #1–#6 are stacked and unmerged. | No Vercel status or comment on any PR (checked via `gh api …/commits/<branch>/statuses`). | Tia imports the repo in Vercel. Then: merge #1 → retarget/rebase each next PR onto `main` → QA each preview in Chrome → merge in order → tag `v1.0.0`. |
+| None open. | | |
 
 ## Deferred
 
 | Item | Why |
 | --- | --- |
-| Preview and production QA in Chrome, external link reachability in Chrome | Needs the Vercel deployment. |
-| Lighthouse on production | Local production run (mobile): Performance 94, Accessibility 100, Best Practices 100, SEO 100; LCP 1.0 s, CLS 0, TBT 300 ms. Re-run on the production URL after merge. |
-| Tag `v1.0.0` + GitHub release | After the stage 6 PR merges. |
+| Nothing deferred for v1.0.0. | |
 
 ## Decisions I made
 
@@ -63,3 +60,5 @@ Open problems, placeholders waiting on Tia, deferred work, and decisions Claude 
 | 2026-11-25 | `<Analytics />` renders only when `VERCEL=1` at build time. | Elsewhere `/_vercel/insights` doesn't exist and the 404 failed the console-error gate. |
 | 2026-11-25 | OG image uses `@fontsource/space-grotesk` + `@fontsource/inter` WOFF files (dev deps) and spells out the token hexes. | Satori can't read WOFF2 or CSS variables. |
 | 2026-11-25 | 404 page copy written in Tia's voice ("Oops, this page wandered off." / "(probably went to get cake)"), with "Take me home" and a mailto "Tell me what broke". | Stage 6 asks for a 404 page; there's no artboard for it. |
+| 2026-11-25 | Stacked PRs merged forward with `git merge -s ours origin/main` after each squash-merge (checked first that main's tree matched the merged branch exactly). | No conflicts, no history rewrite, each PR diff stays its own stage. |
+| 2026-11-25 | Production Lighthouse run via PageSpeed Insights in Chrome (mobile): 100 / 100 / 100 / 100. | Cloud shell can't reach `*.vercel.app`. |
