@@ -18,5 +18,5 @@ See `specs/known-issues.md` → "Waiting on Tia": nothing open. Repo is public, 
 
 1. Attach `tannaz97shr/tia-portfolio` with push access, clone to `/home/claude/tia-portfolio`.
 2. Read `specs/known-issues.md`.
-3. Cloud QA: `export QA_CHROME_PATH=/opt/pw-browsers/chromium-1243/chrome-linux64/chrome`; QA scripts `qa:shots`, `qa:a11y`, `qa:menu`, `qa:hero`, `qa:links`, `qa:contact`. Previews: `https://tia-portfolio-git-<branch>-tannaz.vercel.app`.
+3. Cloud QA: `export QA_CHROME_PATH=/opt/pw-browsers/chromium-1243/chrome-linux64/chrome`; QA scripts `qa:shots`, `qa:a11y`, `qa:menu`, `qa:hero`, `qa:links`, `qa:contact`. Previews: `https://tia-portfolio-git-<branch>-zeapard-devs.vercel.app`.
 4. PRs via `gh api` (REST); branch deletion via the API is blocked by the session's permission check, so leave merged branches for Tia.
