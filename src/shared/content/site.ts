@@ -5,6 +5,8 @@
  */
 export const site = {
   name: "Tia Shirzadi",
+  /** Primary production domain (apex tiashirzadi.com.au redirects here in Vercel). */
+  url: "https://www.tiashirzadi.com.au",
   shortName: "tia shirzadi",
   legalName: "Tannaz Shirzadi",
   role: "Full-Stack Software Engineer",
