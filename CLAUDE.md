@@ -20,7 +20,7 @@ Claude runs git itself in this repo (branch, commit, push, open PR, squash-merge
 
 QA scripts hit `QA_BASE_URL` (default `http://localhost:3001`) and use `QA_CHROME_PATH` if set (cloud workspace: `/opt/pw-browsers/chromium-1243/chrome-linux64/chrome`). Screenshots land in `design-reference/qa/<stage>/` (gitignored).
 
-Never run `build` while a dev server is running in the same folder. Find what's on a port with `lsof -nP -iTCP:3001 -sTCP:LISTEN`; stop only your own servers, by PID. Restart the 3001 server after every build.
+Never run `build` while a dev server is running in the same folder. Find what's on a port with `lsof -nP -iTCP:3001 -sTCP:LISTEN`; stop only your own servers, by PID. In the cloud workspace `lsof` sees nothing: use `pkill -f next-server` (only Claude's servers run there). Restart the 3001 server after every build.
 
 ## Pinned versions (from package.json)
 

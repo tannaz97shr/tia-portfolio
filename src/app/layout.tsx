@@ -1,4 +1,6 @@
 import type { Metadata, Viewport } from "next";
+import { Footer } from "@/shared/components/layout/Footer";
+import { Header } from "@/shared/components/layout/Header";
 import { site } from "@/shared/content/site";
 import { getSiteUrl } from "@/shared/lib/site-url";
 import { fontVariables } from "@/shared/styles/fonts";
@@ -32,7 +34,18 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en-AU" className={fontVariables}>
-      <body>{children}</body>
+      <body>
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
+        <div className="relative overflow-x-clip">
+          <Header />
+          <main id="main" tabIndex={-1} className="outline-none">
+            {children}
+          </main>
+          <Footer />
+        </div>
+      </body>
     </html>
   );
 }
