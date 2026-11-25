@@ -67,7 +67,13 @@ export function ViewSwitch() {
                     {cta.label} <span className="font-mono text-xs">{cta.href}</span>
                   </span>
                 ) : (
-                  <ButtonLink key={cta.label} href={cta.href} variant={cta.variant} size="lg">
+                  <ButtonLink
+                    key={cta.label}
+                    href={cta.href}
+                    variant={cta.variant}
+                    size="lg"
+                    download={"download" in cta ? cta.download : undefined}
+                  >
                     {cta.label}
                   </ButtonLink>
                 ),
