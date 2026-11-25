@@ -12,7 +12,8 @@ export const ROUTES = {
   home: "/",
 } as const;
 
-export const anchor = (id: SectionId) => `#${id}`;
+/** "/#work": same-page jump on the home page, and still works from the 404 page. */
+export const anchor = (id: SectionId) => `/#${id}`;
 
 /** Main navigation, in order. */
 export const NAV_ITEMS: ReadonlyArray<{ label: string; id: SectionId }> = [

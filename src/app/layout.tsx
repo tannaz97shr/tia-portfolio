@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import { Footer } from "@/shared/components/layout/Footer";
 import { Header } from "@/shared/components/layout/Header";
@@ -48,6 +49,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <Footer />
           </div>
         </MotionProvider>
+        {/* Only on Vercel builds: elsewhere /_vercel/insights doesn't exist. */}
+        {process.env.VERCEL === "1" && <Analytics />}
       </body>
     </html>
   );

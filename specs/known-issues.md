@@ -19,11 +19,17 @@ Open problems, placeholders waiting on Tia, deferred work, and decisions Claude 
 
 ## Open problems
 
-_None._
+| Problem | Evidence | Next step |
+| --- | --- | --- |
+| No Vercel project is connected, so no previews or production deploys. PRs #1–#6 are stacked and unmerged. | No Vercel status or comment on any PR (checked via `gh api …/commits/<branch>/statuses`). | Tia imports the repo in Vercel. Then: merge #1 → retarget/rebase each next PR onto `main` → QA each preview in Chrome → merge in order → tag `v1.0.0`. |
 
 ## Deferred
 
-_None._
+| Item | Why |
+| --- | --- |
+| Preview and production QA in Chrome, external link reachability in Chrome | Needs the Vercel deployment. |
+| Lighthouse on production | Local production run (mobile): Performance 94, Accessibility 100, Best Practices 100, SEO 100; LCP 1.0 s, CLS 0, TBT 300 ms. Re-run on the production URL after merge. |
+| Tag `v1.0.0` + GitHub release | After the stage 6 PR merges. |
 
 ## Decisions I made
 
@@ -53,3 +59,7 @@ _None._
 | 2026-11-25 | Experience cards: oldest first on desktop, newest first on phones (as in each artboard) via `flex-col-reverse`; screen readers read oldest first. Card tilt uses the `rotate`/`translate` properties so hover lift still works. | Follows both artboards. |
 | 2026-11-25 | Contact keeps the canvas note "psst… I reply within a day". | From the design Tia approved; change in `src/modules/contact/content.ts` if it isn't true. |
 | 2026-11-25 | Contact has a mailto button plus a "Copy email" button (shows "Copied", announced via `role="status"`). Services cards show the Upwork button on phones too. | Kickoff #4; keeps both service CTAs available. |
+| 2026-11-25 | Section links are root-relative (`/#work`) instead of `#work`. | They also work from the 404 page; same-page jump on home. |
+| 2026-11-25 | `<Analytics />` renders only when `VERCEL=1` at build time. | Elsewhere `/_vercel/insights` doesn't exist and the 404 failed the console-error gate. |
+| 2026-11-25 | OG image uses `@fontsource/space-grotesk` + `@fontsource/inter` WOFF files (dev deps) and spells out the token hexes. | Satori can't read WOFF2 or CSS variables. |
+| 2026-11-25 | 404 page copy written in Tia's voice ("Oops, this page wandered off." / "(probably went to get cake)"), with "Take me home" and a mailto "Tell me what broke". | Stage 6 asks for a 404 page; there's no artboard for it. |
