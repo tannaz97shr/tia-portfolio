@@ -25,6 +25,7 @@ Business facts in code come from `src/shared/content/site.ts`, never typed into 
 | Studio | Zeapard Devs — https://zeapard.com.au |
 | Availability | Available now; on-site, hybrid or remote; open to freelance |
 | Time zone | Australia/Melbourne |
+| Domain | https://www.tiashirzadi.com.au (primary; apex redirects to `www`). Owned by Tia, DNS at VentraIP |
 
 ### Projects (typed data in `src/modules/work/data.ts`)
 

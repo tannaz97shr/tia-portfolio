@@ -6,7 +6,7 @@ Open problems, placeholders waiting on Tia, deferred work, and decisions Claude 
 
 | Item | Where | What's needed |
 | --- | --- | --- |
-| Custom domain `tiashirzadi.com.au` | Vercel → Domains, then VentraIP DNS | Tia adds the domain in Vercel and enters the DNS records Vercel shows at VentraIP (DNS changes are Tia's). Claude then redeploys and checks canonical, sitemap and OG URLs use the domain. |
+| Nothing waiting. | | |
 
 ## Placeholders on the site
 
@@ -61,3 +61,4 @@ Open problems, placeholders waiting on Tia, deferred work, and decisions Claude 
 | 2026-11-25 | Stacked PRs merged forward with `git merge -s ours origin/main` after each squash-merge (checked first that main's tree matched the merged branch exactly). | No conflicts, no history rewrite, each PR diff stays its own stage. |
 | 2026-11-25 | Production Lighthouse run via PageSpeed Insights in Chrome (mobile): 100 / 100 / 100 / 100. | Cloud shell can't reach `*.vercel.app`. |
 | 2026-11-25 | CV served from `public/tia-shirzadi-cv.pdf` (Tia's phone-free "Master Resume - Portfolio" PDF, checked for a phone number in text and metadata) with `download="Tia-Shirzadi-CV.pdf"`. | Kickoff #5; filename is friendlier for recruiters. |
+| 2026-11-25 | `getSiteUrl` uses `site.url` (www.tiashirzadi.com.au) on every Vercel build instead of `VERCEL_PROJECT_PRODUCTION_URL`. | Vercel's variable can pick the apex, which redirects; canonicals, sitemap, OG and JSON-LD should name the final URL. Previews also canonicalise to the real site, as before. |
